@@ -1,6 +1,6 @@
 package program2;
 
-abstract class Student implements Comparable {
+abstract public class Student implements Comparable {
 
    protected final int FULL_TIME_CREDIT_MIN = 12;
    protected final int MAX_BILLABLE_CREDITS = 15;
