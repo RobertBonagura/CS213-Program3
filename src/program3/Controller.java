@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import program2.GUITuitionManager;
 
+/**
+ * Controller class to handle all action events.
+ */
 public class Controller {
 
    private boolean isInstate, isOutstate, isInternat;
@@ -21,11 +24,19 @@ public class Controller {
    TextArea textArea;
 
    GUITuitionManager tuitionManager;
+
+   /**
+    * Constructor to bind an instance of the TuitionManager to GUI.
+    * Instate Student is selected by default.
+    */
    public Controller(){
       this.tuitionManager = new GUITuitionManager();
       this.isInstate = true;
    }
 
+   /**
+    * Check selected Student type and add to list.
+    */
    public void add(){
       System.out.println("Add");
       if (isInstate) {
@@ -43,16 +54,26 @@ public class Controller {
       }
    }
 
+   /**
+    * Remove student based on First and Last Name provided.
+    */
    public void remove(){
       System.out.println("Remove");
       tuitionManager.sendDeleteRequest(fName.getText(), lName.getText());
    }
 
+   /**
+    * Print all student list information to TextArea.
+    */
    public void print(){
       System.out.println("Print");
       textArea.appendText(tuitionManager.sendPrintRequest());
    }
 
+   /**
+    * Based on selected radio button, enable the corresponding checkbox and
+    * disable all other checkboxes.
+    */
    public void radioAction(){
       if (instate.selectedProperty().get()) {
          isInstate = true;
