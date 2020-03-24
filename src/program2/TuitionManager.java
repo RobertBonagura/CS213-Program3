@@ -1,82 +1,99 @@
-package program2;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class TuitionManager
 {
-   public void run(){
+   /**
+   Abstracted entry point of program.
+   Main should call this method once.
+    @author Ezra Haleva
+   */
+   public void run(){                   
       Scanner sc = new Scanner(System.in);
       StudentList studentList = new StudentList();
 
       boolean exit = false;
       while(!exit){
-         char command = sc.next().charAt(0);
-         switch(command){
-            case 'I' :
-               {
+
+         try {
+            char command = sc.next().charAt(0);
+            switch (command) {
+               case 'I': {
                   Instate studentToAdd = createInstateFromInput(sc);
-                  if(addRequestIsValid(studentToAdd, studentList)){
-                     studentList.add(studentToAdd);
+                  if (!studentToAdd.isValid()) {
+                     System.out.println("Error: invalid student entry");
+                     break;
                   }
+                  if (studentList.contains(studentToAdd)) {
+                     System.out.println("Error: list already contains this student");
+                     break;
+                  }
+                  studentList.add(studentToAdd);
                   break;
                }
-            case 'O' :
-               {
+               case 'O': {
                   Outstate studentToAdd = createOutstateFromInput(sc);
-                  if(addRequestIsValid(studentToAdd, studentList)){
-                     studentList.add(studentToAdd);
+                  if (!studentToAdd.isValid()) {
+                     System.out.println("Error: invalid student entry");
+                     break;
                   }
+                  if (studentList.contains(studentToAdd)) {
+                     System.out.println("Error: list already contains this student");
+                     break;
+                  }
+                  studentList.add(studentToAdd);
                   break;
                }
-            case 'N' :
-               {
+               case 'N': {
                   International studentToAdd = createInternationalFromInput(sc);
-                  if(addRequestIsValid(studentToAdd, studentList)){
-                     studentList.add(studentToAdd);
+                  if (!studentToAdd.isValid()) {
+                     System.out.println("Error: invalid student entry");
+                     break;
                   }
+                  if (studentList.contains(studentToAdd)) {
+                     System.out.println("Error: list already contains this student");
+                     break;
+                  }
+                  studentList.add(studentToAdd);
                   break;
                }
-            case 'R' :
-               {
+               case 'R': {
                   String fName = sc.next();
                   String lName = sc.next();
                   int NULL = 0;
                   Student studentToRemove = new Instate(fName, lName, NULL, NULL);
-                  if(studentList.contains(studentToRemove)){
+                  if (studentList.contains(studentToRemove)) {
                      studentList.remove(studentToRemove);
+                  } else {
+                     System.out.println("Error: list does not contain this student");
                   }
                   break;
                }
-            case 'P' :
-               {
+               case 'P': {
                   studentList.show();
                   break;
                }
-            case 'Q' :
-               {
+               case 'Q': {
                   exit = true;
                   break;
                }
-            default:
-               {
+               default: {
                   System.out.println("Error, did not recognize input command");
-                  exit = true;
                   break;
                }
+            }
+         } catch (InputMismatchException e){
+            System.out.println("Error, bad input. Please Try again");
          }
+
       }
       System.out.println("Program Terminated");
    }
-   private boolean addRequestIsValid(Student student, StudentList studentList){
-      if(student.credit < 1){
-         return false;
-      } else if( (student instanceof International) && student.credit< 9 ) {
-         return false;
-      } else if (studentList.contains(student)){
-         return false;
-      }
-      return true;
-   }
+   /**
+   Reads data from standard input and creates with it an instance of Instate.
+   Types of data read are specific to Instate. 
+   @param sc A scanner through which to read input
+   @return the instance of Instate created with read data.
+   */
    private Instate createInstateFromInput(Scanner sc){
       String fName = sc.next();
       String lName = sc.next();
@@ -84,26 +101,38 @@ public class TuitionManager
       int funding = sc.nextInt();
       return new Instate(fName, lName, credit, funding);
    }
+   /**
+   Reads data from standard input and creates with it an instance of Outstate.
+   Types of data read are specific to Outstate. 
+   @param sc A scanner through which to read input
+   @return the instance of Outstate created with read data.
+   */
    private Outstate createOutstateFromInput(Scanner sc){
       String fName = sc.next();
       String lName = sc.next();
       int credit = sc.nextInt();
-      int tristateChar = sc.nextInt();
+      String tristateStr = sc.next();
       boolean isTristate;
-      if(tristateChar == 'T'){
+      if(tristateStr.charAt(0) == 'T'){
          isTristate = true;
       }else{
          isTristate = false;
       }
       return new Outstate(fName, lName, credit, isTristate);
    }
+   /**
+   Reads data from standard input and creates with it an instance of International.
+   Types of data read are specific to International. 
+   @param sc A scanner through which to read input
+   @return the instance of International created with read data.
+   */
    private International createInternationalFromInput(Scanner sc){
       String fName = sc.next();
       String lName = sc.next();
       int credit = sc.nextInt();
-      int exchangeChar = sc.nextInt();
+      String exchangeStr = sc.next();
       boolean isExchange;
-      if(exchangeChar == 'T'){
+      if(exchangeStr.charAt(0) == 'T'){
          isExchange = true;
       } else{
          isExchange = false;
