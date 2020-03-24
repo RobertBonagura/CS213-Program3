@@ -1,3 +1,5 @@
+package program2;
+
 /**
 Abstract class for shared functionality between student types.
 Includes compareTo implementation, toString of shared variables,

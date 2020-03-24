@@ -1,3 +1,5 @@
+package program2;
+
 /**
  *  Container class used to hold a list fo students.
  * @author Robert Bonagura

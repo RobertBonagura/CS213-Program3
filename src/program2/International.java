@@ -1,3 +1,5 @@
+package program2;
+
 /**
  * Class used to represent International Student.
  * @author Robert Bonagura

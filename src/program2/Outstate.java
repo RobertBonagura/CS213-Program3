@@ -1,3 +1,5 @@
+package program2;
+
 /**
  * Class used to represent an Out-Of-State student.
  * @author Robert Bonagura

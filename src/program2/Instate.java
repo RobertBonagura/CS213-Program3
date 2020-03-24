@@ -1,8 +1,10 @@
+package program2;
+
 /**
 Subclass of Student, factors funding into tuiton cost.
 @author Ezra Haleva
 */
-public class Instate extends Student
+public classgiInstate extends Student
 {
 
    private int funding;
