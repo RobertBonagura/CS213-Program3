@@ -36,13 +36,22 @@ public class Controller {
     */
    public void add(){
       String message;
+      if (fName.getText().isBlank() || lName.getText().isBlank()) {
+         message = "Error: Student name fields can not be left blank" +
+                    " or contain only white spaces.\n";
+         textArea.appendText(message);
+         return;
+      }
+      if (credits.getText().isBlank()) {
+         message = "Error: Number of Credits field can not be left blank.\n";
+         textArea.appendText(message);
+         return;
+      }
+
       try {
          if (isInstate) {
-            if (!funding.isSelected() || fundingAmt.getText().isBlank()) {
-               int FUNDING = 0;
-               message = Main.addInstateRequest(fName.getText(),
-                       lName.getText(), Integer.parseInt(credits.getText()),
-                       FUNDING);
+            if (funding.isSelected() && fundingAmt.getText().isBlank()) {
+               message = "Error: Funding amount can not be left blank.\n";
             } else if (funding.isSelected() &&
                     Integer.parseInt(fundingAmt.getText()) < 0) {
                message = "Error: Funding needs to be a positive value.\n";
@@ -52,9 +61,16 @@ public class Controller {
                message = "Error: Student needs to take at least 9 credits" +
                        " in order to receive funding.\n";
             } else {
-               message = Main.addInstateRequest(fName.getText(),
-                       lName.getText(), Integer.parseInt(credits.getText()),
-                       Integer.parseInt(fundingAmt.getText()));
+               if (!funding.isSelected()){
+                  int FUNDING = 0;
+                  message = Main.addInstateRequest(fName.getText(),
+                          lName.getText(), Integer.parseInt(credits.getText()),
+                          FUNDING);
+               } else {
+                  message = Main.addInstateRequest(fName.getText(),
+                          lName.getText(), Integer.parseInt(credits.getText()),
+                          Integer.parseInt(fundingAmt.getText()));
+               }
             }
          } else if (isOutstate) {
             message = Main.addOutstateRequest(fName.getText(),
@@ -69,7 +85,8 @@ public class Controller {
             message = "Error: A student type could not be determined.\n";
          }
       } catch (NumberFormatException e) {
-         message = e.toString() + "\n";
+         message = "Error: Fields requiring a number value can not be given" +
+                 " a character value.\n";
       } catch (Exception e){
          message = e.toString() + "\n";
       }
@@ -82,8 +99,13 @@ public class Controller {
     */
    public void remove(){
       String message;
-      message = Main.sendDeleteRequest(fName.getText(),
-              lName.getText());
+      if (fName.getText().isBlank() || lName.getText().isBlank()) {
+         message = "Error: Student name fields can not be left blank" +
+                 " or contain only white spaces.\n";
+      } else {
+         message = Main.sendDeleteRequest(fName.getText(),
+                 lName.getText());
+      }
       textArea.appendText(message);
    }
 
