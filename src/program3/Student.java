@@ -1,4 +1,4 @@
-package program2;
+package program3;
 
 /**
 Abstract class for shared functionality between student types.

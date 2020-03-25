@@ -1,4 +1,4 @@
-package program2;
+package program3;
 
 /**
 Subclass of Student, factors funding into tuiton cost.

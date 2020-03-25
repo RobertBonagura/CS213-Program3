@@ -1,4 +1,4 @@
-package program2;
+package program3;
 /**
  * Class used to run TuitionManager class for Program 2.
  * @author Ezra Haleva and Robert Bonagura
