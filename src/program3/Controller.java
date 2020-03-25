@@ -46,6 +46,11 @@ public class Controller {
             } else if (funding.isSelected() &&
                     Integer.parseInt(fundingAmt.getText()) < 0) {
                message = "Error: Funding needs to be a positive value.\n";
+            } else if (funding.isSelected() &&
+                    Integer.parseInt(credits.getText()) < 9 &&
+                    Integer.parseInt(fundingAmt.getText()) > 0) {
+               message = "Error: Student needs to take at least 9 credits" +
+                       " in order to receive funding.\n";
             } else {
                message = Main.addInstateRequest(fName.getText(),
                        lName.getText(), Integer.parseInt(credits.getText()),
