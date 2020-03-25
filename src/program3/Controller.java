@@ -36,37 +36,44 @@ public class Controller {
 
    /**
     * Check selected Student type and add to list.
+    * Appends confirmation message or error message to textArea.
     */
    public void add(){
-      System.out.println("Add");
+      String message;
       if (isInstate) {
-         tuitionManager.addInstateRequest(fName.getText(), lName.getText(),
-                 Integer.parseInt(credits.getText()),
+         message = tuitionManager.addInstateRequest(fName.getText(),
+                 lName.getText(), Integer.parseInt(credits.getText()),
                  Integer.parseInt(fundingAmt.getText()));
       } else if (isOutstate) {
-         tuitionManager.addOutstateRequest(fName.getText(), lName.getText(),
-                 Integer.parseInt(credits.getText()), tristate.isSelected());
+         message = tuitionManager.addOutstateRequest(fName.getText(),
+                 lName.getText(), Integer.parseInt(credits.getText()),
+                 tristate.isSelected());
 
       } else if (isInternat) {
-         tuitionManager.addInternationalRequest(fName.getText(),
+         message = tuitionManager.addInternationalRequest(fName.getText(),
                  lName.getText(), Integer.parseInt(credits.getText()),
                  exchange.isSelected());
+      } else {
+         message = "Error: A student type could not be determined.\n";
       }
+      textArea.appendText(message);
    }
 
    /**
     * Remove student based on First and Last Name provided.
+    * Appends confirmation message or error message to textArea
     */
    public void remove(){
-      System.out.println("Remove");
-      tuitionManager.sendDeleteRequest(fName.getText(), lName.getText());
+      String message;
+      message = tuitionManager.sendDeleteRequest(fName.getText(),
+              lName.getText());
+      textArea.appendText(message);
    }
 
    /**
     * Print all student list information to TextArea.
     */
    public void print(){
-      System.out.println("Print");
       textArea.appendText(tuitionManager.sendPrintRequest());
    }
 
