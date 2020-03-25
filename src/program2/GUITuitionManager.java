@@ -58,7 +58,7 @@ public class GUITuitionManager {
         Student studentToRemove = new Instate(fName, lName, NULL, NULL);
         if(studentList.contains(studentToRemove)){
             studentList.remove(studentToRemove);
-            return NO_ERROR;
+            return (fName + " " + lName + " Successfully deleted.\n");
         } else {
             return "Error: Could not remove student because student is not present in list.\n";
         }
