@@ -120,6 +120,25 @@ public class StudentList {
       }
    }
 
+   /**
+    * Returns a String representation of the show() method.
+    * @return
+    */
+   public String toString(){
+      StringBuilder sb = new StringBuilder();
+      String result;
+      if (this.size == 0){
+         result = "The list is empty";
+         return result;
+      }
+      for (int i = 0; i < this.getSize(); i++) {
+         Student student = this.students[i];
+         sb.append(student.toString());
+      }
+      result = sb.toString();
+      return result;
+   }
+
 
 
 }

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program3.Controller">
    <children>
       <VBox>
          <children>
@@ -14,7 +14,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <TextField>
+                  <TextField fx:id="fName">
                      <HBox.margin>
                         <Insets left="100.0" />
                      </HBox.margin></TextField>
@@ -26,7 +26,7 @@
             <HBox prefHeight="42.0" prefWidth="600.0">
                <children>
                   <Label text="Last Name" />
-                  <TextField>
+                  <TextField fx:id="lName">
                      <HBox.margin>
                         <Insets left="100.0" />
                      </HBox.margin></TextField>
@@ -38,7 +38,7 @@
             <HBox prefHeight="66.0" prefWidth="600.0">
                <children>
                   <Label text="Number of Credits" />
-                  <TextField>
+                  <TextField fx:id="credits">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin></TextField>
@@ -62,22 +62,25 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton mnemonicParsing="false" text="INSTATE" />
-            <RadioButton mnemonicParsing="false" text="OUTSTATE" GridPane.rowIndex="1" />
-            <RadioButton mnemonicParsing="false" text="INTERNATIONAL" GridPane.rowIndex="2" />
-            <CheckBox mnemonicParsing="false" text="Funding" GridPane.columnIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Tri-State Student" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Exchange Student" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefHeight="26.0" prefWidth="89.0" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="3">
+            <RadioButton fx:id="instate" mnemonicParsing="false" onMouseClicked="#radioAction" selected="true" text="INSTATE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="student" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="outstate" mnemonicParsing="false" onMouseClicked="#radioAction" text="OUTSTATE" toggleGroup="$student" GridPane.rowIndex="1" />
+            <RadioButton fx:id="internat" mnemonicParsing="false" onMouseClicked="#radioAction" text="INTERNATIONAL" toggleGroup="$student" GridPane.rowIndex="2" />
+            <CheckBox fx:id="funding" mnemonicParsing="false" text="Funding" GridPane.columnIndex="1" />
+            <CheckBox fx:id="tristate" disable="true" mnemonicParsing="false" text="Tri-State Student" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="exchange" disable="true" mnemonicParsing="false" text="Exchange Student" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="fundingAmt" prefHeight="26.0" prefWidth="89.0" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#add" text="Add" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin></Button>
-            <Button mnemonicParsing="false" text="Remove" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#remove" text="Remove" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin></Button>
-            <Button mnemonicParsing="false" text="Print" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#print" text="Print" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin></Button>
@@ -86,6 +89,6 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </GridPane>
-      <TextArea prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </VBox>
