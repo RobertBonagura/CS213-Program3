@@ -1,4 +1,4 @@
-package program2;
+package program3;
 
 /**
  *  Container class used to hold a list fo students.
@@ -128,7 +128,7 @@ public class StudentList {
       StringBuilder sb = new StringBuilder();
       String result;
       if (this.size == 0){
-         result = "The list is empty";
+         result = "The list is empty\n";
          return result;
       }
       for (int i = 0; i < this.getSize(); i++) {

@@ -1,4 +1,4 @@
-package program2;
+package program3;
 
 /**
  * Class used to represent an Out-Of-State student.

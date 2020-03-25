@@ -2,7 +2,6 @@ package program3;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import program2.GUITuitionManager;
 
 /**
  * Controller class to handle all action events.
@@ -23,14 +22,11 @@ public class Controller {
    @FXML
    TextArea textArea;
 
-   GUITuitionManager tuitionManager;
-
    /**
     * Constructor to bind an instance of the TuitionManager to GUI.
     * Instate Student is selected by default.
     */
    public Controller(){
-      this.tuitionManager = new GUITuitionManager();
       this.isInstate = true;
    }
 
@@ -41,16 +37,16 @@ public class Controller {
    public void add(){
       String message;
       if (isInstate) {
-         message = tuitionManager.addInstateRequest(fName.getText(),
+         message = Main.addInstateRequest(fName.getText(),
                  lName.getText(), Integer.parseInt(credits.getText()),
                  Integer.parseInt(fundingAmt.getText()));
       } else if (isOutstate) {
-         message = tuitionManager.addOutstateRequest(fName.getText(),
+         message = Main.addOutstateRequest(fName.getText(),
                  lName.getText(), Integer.parseInt(credits.getText()),
                  tristate.isSelected());
 
       } else if (isInternat) {
-         message = tuitionManager.addInternationalRequest(fName.getText(),
+         message = Main.addInternationalRequest(fName.getText(),
                  lName.getText(), Integer.parseInt(credits.getText()),
                  exchange.isSelected());
       } else {
@@ -65,7 +61,7 @@ public class Controller {
     */
    public void remove(){
       String message;
-      message = tuitionManager.sendDeleteRequest(fName.getText(),
+      message = Main.sendDeleteRequest(fName.getText(),
               lName.getText());
       textArea.appendText(message);
    }
@@ -74,7 +70,7 @@ public class Controller {
     * Print all student list information to TextArea.
     */
    public void print(){
-      textArea.appendText(tuitionManager.sendPrintRequest());
+      textArea.appendText(Main.sendPrintRequest());
    }
 
    /**

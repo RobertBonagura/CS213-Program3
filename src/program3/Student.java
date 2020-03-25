@@ -1,4 +1,4 @@
-package program2;
+package program3;
 
 /**
 Abstract class for shared functionality between student types.
@@ -6,7 +6,7 @@ Includes compareTo implementation, toString of shared variables,
 and declares an abstract tuitionDue() method.
 @author Ezra Haleva
 */
-abstract class Student implements Comparable {
+abstract public class Student implements Comparable {
 
 
    protected final int FULL_TIME_CREDIT_MIN = 12;
