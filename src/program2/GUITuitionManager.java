@@ -1,5 +1,7 @@
 package program2;
 
+import javax.swing.*;
+
 public class GUITuitionManager {
     // The use case I envisioned is that the controller will send the appropriate request from
     // the input provided in the GUI by calling the methods here. For error checking, each of the
@@ -61,7 +63,7 @@ public class GUITuitionManager {
             return "Error: Could not remove student because student is not present in list.";
         }
     }
-    public void sendPrintRequest(){
-        studentList.show();
+    public String sendPrintRequest(){
+        return studentList.toString();
     }
 }
