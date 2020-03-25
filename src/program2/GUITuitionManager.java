@@ -18,7 +18,7 @@ public class GUITuitionManager {
         String errorMsg = determineAddRequestErrorMsg(studentToAdd, studentList);
         if(errorMsg.equals(NO_ERROR)){
             studentList.add(studentToAdd);
-            return NO_ERROR;
+            return (fName + " " + lName + " Succesfully added.\n");
         } else {
             return errorMsg;
         }
@@ -28,7 +28,7 @@ public class GUITuitionManager {
         String errorMsg = determineAddRequestErrorMsg(studentToAdd, studentList);
         if(errorMsg.equals(NO_ERROR)){
             studentList.add(studentToAdd);
-            return NO_ERROR;
+            return (fName + " " + lName + " Succesfully added.\n");
         } else {
             return errorMsg;
         }
@@ -38,18 +38,18 @@ public class GUITuitionManager {
         String errorMsg = determineAddRequestErrorMsg(studentToAdd, studentList);
         if(errorMsg.equals(NO_ERROR)){
             studentList.add(studentToAdd);
-            return NO_ERROR;
+            return (fName + " " + lName + " Succesfully added.\n");
         } else {
             return errorMsg;
         }
     }
     private String determineAddRequestErrorMsg(Student student, StudentList studentList){
         if(student.credit < 1){
-            return "Error: Student must have a positive number of credits.";
+            return "Error: Student must have a positive number of credits.\n";
         } else if( (student instanceof International) && student.credit< 9 ) {
-            return "Error: International students must have at least 9 credits.";
+            return "Error: International students must have at least 9 credits.\n";
         } else if (studentList.contains(student)){
-            return "Error: Student could not be added because list already contains this student.";
+            return "Error: Student could not be added because list already contains this student.\n";
         }
         return NO_ERROR;
     }
@@ -60,7 +60,7 @@ public class GUITuitionManager {
             studentList.remove(studentToRemove);
             return NO_ERROR;
         } else {
-            return "Error: Could not remove student because student is not present in list.";
+            return "Error: Could not remove student because student is not present in list.\n";
         }
     }
     public String sendPrintRequest(){
