@@ -22,6 +22,8 @@ public class Main extends Application {
         studentList = new StudentList();
         launch(args);
     }
+
+
     public static String addInstateRequest(String fName, String lName, int numCredits, int funding){
         Instate studentToAdd = new Instate(fName, lName, numCredits, funding);
         String errorMsg = determineAddRequestErrorMsg(studentToAdd, studentList);
@@ -53,7 +55,7 @@ public class Main extends Application {
         }
     }
     private static String determineAddRequestErrorMsg(Student student, StudentList studentList){
-        if(student.credit < 1){
+        if(student.credit < 1) {
             return "Error: Student must have a positive number of credits.\n";
         } else if( (student instanceof International) && student.credit< 9 ) {
             return "Error: International students must have at least 9 credits.\n";

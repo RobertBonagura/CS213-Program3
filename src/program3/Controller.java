@@ -37,9 +37,19 @@ public class Controller {
    public void add(){
       String message;
       if (isInstate) {
-         message = Main.addInstateRequest(fName.getText(),
-                 lName.getText(), Integer.parseInt(credits.getText()),
-                 Integer.parseInt(fundingAmt.getText()));
+         if (!funding.isSelected() || fundingAmt.getText().isBlank()) {
+            int FUNDING = 0;
+            message = Main.addInstateRequest(fName.getText(),
+                    lName.getText(), Integer.parseInt(credits.getText()),
+                    FUNDING);
+         } else if (funding.isSelected() &&
+                 Integer.parseInt(fundingAmt.getText()) < 0) {
+            message = "Error: Funding needs to be a positive value.\n";
+         } else {
+            message = Main.addInstateRequest(fName.getText(),
+                    lName.getText(), Integer.parseInt(credits.getText()),
+                    Integer.parseInt(fundingAmt.getText()));
+         }
       } else if (isOutstate) {
          message = Main.addOutstateRequest(fName.getText(),
                  lName.getText(), Integer.parseInt(credits.getText()),
