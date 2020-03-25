@@ -68,7 +68,7 @@ public class International extends Student {
    public String toString() {
       StringBuilder sb = new StringBuilder(super.toString());
       String exchangeStr = "\nIs exchange student: " + exchange + "\n";
-      String tuitionStr = "Tuition Due: " + tuitionDue();
+      String tuitionStr = "Tuition Due: " + tuitionDue() + "\n";
       sb.append(exchangeStr);
       sb.append(tuitionStr);
       return sb.toString();

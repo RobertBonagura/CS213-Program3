@@ -70,7 +70,7 @@ public class Outstate extends Student {
    public String toString() {
       StringBuilder sb = new StringBuilder(super.toString());
       String tristateStr = "\nLives in Tristate: " + tristate + "\n";
-      String tuitionStr = "Tuition Due: " + tuitionDue();
+      String tuitionStr = "Tuition Due: " + tuitionDue() + "\n";
       sb.append(tristateStr);
       sb.append(tuitionStr);
       return sb.toString();
