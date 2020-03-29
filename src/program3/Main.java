@@ -25,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Project3GUI.fxml"));
             primaryStage.setTitle("Program 3 - Tuition Manager");
             primaryStage.setScene(new Scene(root, 800, 500));
             primaryStage.show();
