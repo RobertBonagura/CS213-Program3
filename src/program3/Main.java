@@ -12,16 +12,22 @@ public class Main extends Application {
     final static String NO_ERROR = "";
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Program 3 - Tuition Manager");
-        primaryStage.setScene(new Scene(root, 800, 500));
-        primaryStage.show();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            primaryStage.setTitle("Program 3 - Tuition Manager");
+            primaryStage.setScene(new Scene(root, 800, 500));
+            primaryStage.show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
         studentList = new StudentList();
         launch(args);
     }
+
+
     public static String addInstateRequest(String fName, String lName, int numCredits, int funding){
         Instate studentToAdd = new Instate(fName, lName, numCredits, funding);
         String errorMsg = determineAddRequestErrorMsg(studentToAdd, studentList);
@@ -53,7 +59,7 @@ public class Main extends Application {
         }
     }
     private static String determineAddRequestErrorMsg(Student student, StudentList studentList){
-        if(student.credit < 1){
+        if(student.credit < 1) {
             return "Error: Student must have a positive number of credits.\n";
         } else if( (student instanceof International) && student.credit< 9 ) {
             return "Error: International students must have at least 9 credits.\n";
