@@ -2,12 +2,17 @@ package program3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+/**
+ * Takes input from stdin and manages student list and validity logic to determine
+ * appropriate output
+ * @author Ezra Haleva
+ */
 public class TuitionManager
 {
    /**
    Abstracted entry point of program.
    Main should call this method once.
-    @author Ezra Haleva
    */
    public void run(){                   
       Scanner sc = new Scanner(System.in);

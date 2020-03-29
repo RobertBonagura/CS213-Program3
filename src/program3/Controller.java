@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 
 /**
  * Controller class to handle all action events.
+ * @author Robert Bonagura
  */
 public class Controller {
 
